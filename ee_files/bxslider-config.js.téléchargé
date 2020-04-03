@@ -1,0 +1,49 @@
+jQuery(function($) {
+	$(document).ready(function(){
+		$('.revueDePresse').bxSlider({
+			adaptiveHeight: false,
+			mode: 'vertical',
+			// slideHeight: 500,
+			minSlides: 2,
+			pager: false,
+			slideMargin: 10
+		});
+		$('.bxslider').bxSlider({
+			captions: true,
+			pager: false,
+			controls: true
+		});
+
+		$("#revue .bx-wrapper .bx-controls").prepend('<div class="pull-left"><a href="'+ window.location.href +'/blog/revue-de-presse/">+ de revues de presse</a></div>');
+		$("#gform_submit_button_7").addClass("btn btn-default");
+		$(".gpoll_button").text("+ Voir les résultats");
+		$(".gpoll_back_button").text("Revenir");
+		$("#breadcrumbs").appendTo("#title .col-xs-9");
+		// $current = $(location).attr('href');
+		// $("aside a[href='"+$current+"']").hide();
+		$('ul.zwt_ls_list a').removeAttr("style");
+		if ($('html').attr('lang') == 'fr-FR') {
+			$('ul.zwt_ls_list a[hreflang=fr]').hide();
+		}else if ($('html').attr('lang') == 'ar') {
+			$('ul.zwt_ls_list a[hreflang=ar]').hide();
+			$('.bx-controls-direction a.bx-next').each(function() {
+				$(this).insertBefore( $(this).prev('.bx-controls-direction a.bx-prev') );
+			});
+			$("#revue .bx-wrapper .bx-controls .pull-left a").attr("href", window.location.href +"revue-de-presse/");
+			$("#revue .bx-wrapper .bx-controls .pull-left a").text("المزيد");
+		} else if ($('html').attr('lang') == 'en-US') {
+			$('ul.zwt_ls_list a[hreflang=en]').hide();
+		} else if ($('html').attr('lang') == 'zgh-MA') {
+			$('ul.zwt_ls_list a[hreflang=zgh]').hide();
+		}
+		$('.zwt_horizontal').css("display", "block");
+    $("i.icon-angle-down").addClass("fa fa-caret-down");
+    $("i.icon-angle-right").addClass("fa fa-caret-right");
+
+    $("a.gpoll_button").text("Résultats");
+    $("input:submit").addClass("btn btn-default");
+    $("input.large, select.large, textarea.large").addClass("form-control").removeClass("large textarea");
+    $("div#input_1_9 input, div#input_5_1 input, div#input_4_6_container input, input#input_4_11_other").addClass("form-control");
+	});
+});
+
